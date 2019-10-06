@@ -9,7 +9,7 @@ User = settings.AUTH_USER_MODEL
 class PostQuerySet(models.QuerySet):
     def published(self):
         now = timezone.now()
-        return self.filter(publish_date__lte=now)
+        return self.filter(postPublishDate=now)
 
     def search(self, query):
         lookup = (
@@ -50,13 +50,16 @@ class Post(models.Model):
     objects = PostManager()
 
     class Meta:
-        ordering = ['-publish_date', '-updated', '-timestamp']
+        ordering = ['-postTimeStamp', '-postPublishDate', '-PostUpdated']
 
     def get_absolute_url(self):
-        return f"/blog/{self.postUrl}"
+        return f"/post/{self.postUrl}"
 
     def get_edit_url(self):
         return f"{self.get_absolute_url()}/edit"
 
     def get_delete_url(self):
         return f"{self.get_absolute_url()}/delete"
+
+    def __str__(self):
+        return self.postTitle
