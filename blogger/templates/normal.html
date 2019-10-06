@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>{% block head_title %}{% endblock %} Blogger-A Simple Blog</title>
+    <style>
+         html {
+    position: relative;
+    min-height: 100%;
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}
+    </style>
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <div class='container-fluid'>
+         {% block content %}
+            {% endblock %}
+    </div>
+
+
+    <div class="col s12">
+  <h3 class="flow-text">This web application creates a very basic blog site using Django.
+    The site allows blog authors to create text-only blogs using the Admin site.
+    Any user can list posts, and its details</h3>
+    </div>
+    <div class="row">
+  <div class="col s6">
+  <h5>Sign Up to Add New Posts</h5>
+  <a href="{% url 'signup' %}" class="waves-effect waves-light btn-large">Sign Up</a>
+  </div>
+     <div class="col s6">
+    <h5>Login to View your Posts</h5>
+  <a href="{% url 'login' %}" class="waves-effect waves-light btn-large">Login</a>
+     </div>
+   </div>
+      {% include 'js.html' %}
+  </body>
+        <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Blogger</h5>
+                <p class="grey-text text-lighten-4">A Simple BLog Application to Add, Edit and Delete Posts along with Pagination Facility.</p>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2019 Blogger - All Rights Reserved.
+            </div>
+          </div>
+        </footer>
+</html>
